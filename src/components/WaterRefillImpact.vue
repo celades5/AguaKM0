@@ -3,6 +3,7 @@
     <h1>Water Refill Impact Calculator</h1>
     <div>
       <label for="refills">Number of Water Refills:</label>
+      <!--button ensures that min of refills > 0 -->
       <input type="number" id="refills" v-model="refills" min="0">
     </div>
     <button @click="calculateImpact">Calculate Impact</button>
@@ -13,17 +14,21 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import VueClipboard from 'vue-clipboard3';
+// import library for CountUp animation
 
-const refills = ref(0);
-const impactCalculated = ref(false);
+// Define reactive variables to store the data
+// Each variable is associated with a specific piece of data that the application needs to track
+const refills = ref(0); // stores the number of water refills entered by the user
+const impactCalculated = ref(false); // boolean flag that indicates whether the environmental impact has been calculated
 const bottlesSaved = ref(0);
 const plasticSaved = ref(0);
 const co2Saved = ref(0);
+// using the ref function, you ensure that these variables are reactive
 
 const calculateImpact = () => {
-  bottlesSaved.value = refills.value * 0.5; // Assuming 1 refill = 0.5 bottles
-  plasticSaved.value = bottlesSaved.value * 0.5; // Assuming 1 bottle = 0.5 kg of plastic
-  co2Saved.value = bottlesSaved.value * 0.2; // Assuming 1 bottle = 0.2 kg of CO2
+  bottlesSaved.value = refills.value * 2;
+  plasticSaved.value = bottlesSaved.value * 0.012; 
+  co2Saved.value = bottlesSaved.value * 0.08;
   impactCalculated.value = true;
 };
 
@@ -31,10 +36,10 @@ const impactMessage = () => {
   return `You saved ${bottlesSaved.value} plastic bottles (${plasticSaved.value} kg) and ${co2Saved.value} kg of CO2 by refilling water ${refills.value} times.`;
 };
 
-</script>
-  
-<style scoped>
 
+// CSS for the script
+</script>
+<style scoped>
 .title {
   font-family: 'Arial', sans-serif;
   font-size: 24px;
