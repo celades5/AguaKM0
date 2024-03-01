@@ -20,6 +20,8 @@ To run this application locally, follow these steps:
 3. Run `npm install` to install the project dependencies.
 4. Run `npm run serve` to start the development server.
 5. Open your browser and navigate to `http://localhost:8080` to view the application.
+6. Additionally, run `npm run dev` to start the server development
+7. Open your browser and navigate to `http://localhost:5173/` to view the application.
 
 ## Technologies Used
 
